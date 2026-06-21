@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Event Details</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>M S P 93 C COMPANY</h1>
+
+    <section>
+
+        <h2>Activities</h2>
+
+        <ul>
+            <li>Inauguration</li>
+            <li>Retirement Ceremony</li>
+            <li>Cultural Program</li>
+            <li>Dinner</li>
+        </ul>
+
+    </section>
+
+    <section>
+
+        <h2>Retiring Officers</h2>
+
+        <div class="officer">
+
+            <img src="images/retired-officers.jpg.jpeg" alt="Retired officers group photo" class="retired-photo"
+                oneclick="openImage(this.src)">
+            <p>
+                Group photo of retired officers honored at function.
+            </p>
+        </div>
+
+    </section>
+
+
+
+    <section>
+        <a href="gallery.html">
+            <button>Photo Gallery</button>
+        </a>
+
+    </section>
+    <div id="imageModal" class="modal" onclick="closeImage()">
+        <img id="modalImg">
+    </div>
+
+    <script>
+        function openImage(src) {
+            document.getElementById("imageModal").style.display = "flex";
+            document.getElementById("modalImg").src = src;
+        }
+
+        function closeImage() {
+            document.getElementById("imageModal").style.display = "none";
+        }
+    </script>
+    <footer>
+        MSP 93 C Company © 2026
+    </footer>
+</body>
+
+</html>

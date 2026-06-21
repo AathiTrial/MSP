@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Photo Gallery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>Photo Gallery</h1>
+
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="images/photo1.jpg.jpeg" alt="Photo 1" onclick="openImage(this.src)">
+            <p class="photo-caption">Inaugurated by DySP THAMARASSERY</p>
+        </div>
+        <img src="IMAGES/photo2.jpg.jpeg" onclick="openImage(this.src)">
+        <img src="IMAGES/photo3.jpg.jpeg" onclick="openImage(this.src)">
+        <img src="IMAGES/photo4.jpg.jpeg" onclick="openImage(this.src)">
+        <img src="IMAGES/photo5.jpg.jpeg" onclick="openImage(this.src)">
+        <img src="IMAGES/photo6.jpg.jpeg" onclick="openImage(this.src)">
+        <img src="IMAGES/photo7.jpg.jpeg" onclick="openImage(this.src)">
+        <img src="IMAGES/photo8.jpg.jpeg" onclick="openImage(this.src)">
+        <img src="IMAGES/photo9.jpg.jpeg" onclick="openImage(this.src)">
+        <img src="IMAGES/photo10.jpg.jpeg" onclick="openImage(this.src)">
+        <img src="IMAGES/photo11.jpg.jpeg" onclick="openImage(this.src)">
+        <img src="IMAGES/photo12.jpg.jpeg" onclick="openImage(this.src)">
+        <img src="IMAGES/photo13.jpg.jpeg" onclick="openImage(this.src)">
+        <img src="IMAGES/photo14.jpg.jpeg" onclick="openImage(this.src)">
+        <img src="IMAGES/photo15.jpg.jpeg" onclick="openImage(this.src)">
+        <img src="IMAGES/photo16.jpg.jpeg" onclick="openImage(this.src)">
+        <img src="IMAGES/photo17.jpg.jpeg" onclick="openImage(this.src)">
+
+    </div>
+    <div id="imageModal" class="modal" onclick="closeImage()">
+        <img id="modalImg">
+    </div>
+
+    <script>
+        function openImage(src) {
+            document.getElementById("imageModal").style.display = "flex";
+            document.getElementById("modalImg").src = src;
+        }
+
+        function closeImage() {
+            document.getElementById("imageModal").style.display = "none";
+        }
+    </script>
+</body>
+
+</html>
