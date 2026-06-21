@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details - MSP 93 C Company</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>🛡️ MSP 93 C COMPANY 🛡️</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Event Activities & Program</h2>
+            <ul>
+                <li>🎖️ Inauguration Ceremony</li>
+                <li>👮‍♂️ Retirement Ceremony</li>
+                <li>🎭 Cultural Program & Performances</li>
+                <li>🍽️ Grand Dinner Reception</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Honoring Our Officers</h2>
+            <div class="officer">
+                <img src="images/retired-officers.jpg.jpeg" alt="Retired officers group photo" class="retired-photo"
+                    onclick="openImage(this.src)" title="Click to view full size">
+                <p>
+                    👮 Group photo of dedicated officers who have served with honor and excellence. Their years of commitment and service have been instrumental in maintaining peace and order.
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <a href="gallery.html">
+                <button>🎞️ View Photo Gallery</button>
+            </a>
+        </section>
+
+        <div id="imageModal" class="modal" onclick="closeImage()">
+            <img id="modalImg" alt="Modal image view">
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 MSP 93 C Company. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function openImage(src) {
+            document.getElementById("imageModal").style.display = "flex";
+            document.getElementById("modalImg").src = src;
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeImage() {
+            document.getElementById("imageModal").style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeImage();
+            }
+        });
+    </script>
+</body>
+
+</html>

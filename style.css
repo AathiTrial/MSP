@@ -1,0 +1,626 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --police-navy: #001a4d;
+    --police-blue: #003d99;
+    --police-light: #0052cc;
+    --police-gold: #D4AF37;
+    --police-saffron: #FF9500;
+    --police-white: #ffffff;
+    --police-silver: #e8e8e8;
+    --background: #f0f2f5;
+    --text-primary: #001a4d;
+    --text-secondary: #555;
+    --border: #d4d4d4;
+    --shadow-sm: 0 2px 4px rgba(0, 26, 77, 0.1);
+    --shadow-md: 0 8px 16px rgba(0, 26, 77, 0.15);
+    --shadow-lg: 0 16px 32px rgba(0, 26, 77, 0.2);
+    --transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+    background: linear-gradient(135deg, #f0f2f5 0%, #e0e3eb 100%);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Animated background particles */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(20px); }
+}
+
+@keyframes drift {
+    0%, 100% { transform: translateX(0px); }
+    50% { transform: translateX(20px); }
+}
+
+/* Police stripe pattern background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 100px,
+        rgba(212, 175, 55, 0.02) 100px,
+        rgba(212, 175, 55, 0.02) 101px
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Header & Navigation */
+header {
+    background: linear-gradient(135deg, var(--police-navy) 0%, var(--police-blue) 100%);
+    color: var(--police-white);
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 26, 77, 0.4), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 4px solid var(--police-gold);
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--police-gold), transparent, var(--police-saffron));
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+header h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #ffffff 0%, var(--police-gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    animation: slideInDown 0.8s ease-out;
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Badge/Emblem styling */
+.emblem {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background: var(--police-gold);
+    border-radius: 50%;
+    margin-right: 1rem;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4),
+                inset 0 -2px 5px rgba(0, 0, 0, 0.2);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Main Content */
+main {
+    flex: 1;
+    padding: 3rem 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+section {
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+    padding: 0 1rem;
+}
+
+section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: var(--police-navy);
+    position: relative;
+    padding-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 800;
+}
+
+section h2::before {
+    content: '★';
+    display: block;
+    font-size: 1.5rem;
+    color: var(--police-gold);
+    margin-bottom: 0.5rem;
+    animation: spin 3s infinite;
+}
+
+@keyframes spin {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(180deg); }
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--police-gold), transparent);
+    box-shadow: 0 0 10px var(--police-gold);
+}
+
+/* Event Card - Certificate Style */
+.event-card {
+    background: var(--police-white);
+    max-width: 550px;
+    margin: 3rem auto;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg),
+                0 0 30px rgba(212, 175, 55, 0.2);
+    transition: var(--transition);
+    border: 2px solid var(--police-gold);
+    position: relative;
+    overflow: hidden;
+}
+
+.event-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: repeating-linear-gradient(
+        90deg,
+        var(--police-navy),
+        var(--police-navy) 10px,
+        var(--police-gold) 10px,
+        var(--police-gold) 20px,
+        var(--police-saffron) 20px,
+        var(--police-saffron) 30px
+    );
+}
+
+.event-card::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, var(--police-gold), var(--police-saffron));
+    border-radius: 50%;
+    opacity: 0.1;
+    animation: float 3s ease-in-out infinite;
+}
+
+.event-card:hover {
+    transform: translateY(-8px) rotateX(5deg);
+    box-shadow: var(--shadow-lg),
+                0 0 50px rgba(212, 175, 55, 0.4);
+}
+
+.banner {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-md),
+                inset 0 0 20px rgba(0, 26, 77, 0.1);
+    margin-bottom: 1.5rem;
+    object-fit: cover;
+    transition: var(--transition);
+    border: 3px solid var(--police-gold);
+    position: relative;
+    z-index: 2;
+}
+
+.banner:hover {
+    transform: scale(1.03) rotateY(2deg);
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
+}
+
+.event-card h2 {
+    font-size: 1.9rem;
+    margin: 1.5rem 0;
+    color: var(--police-navy);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 800;
+}
+
+.event-card p {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+/* Buttons - Badge Style */
+button {
+    background: linear-gradient(135deg, var(--police-navy) 0%, var(--police-blue) 100%);
+    color: var(--police-white);
+    padding: 0.9rem 2.5rem;
+    border: 2px solid var(--police-gold);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 6px 20px rgba(0, 26, 77, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+button:hover::before {
+    left: 100%;
+}
+
+button:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 35px rgba(0, 26, 77, 0.4),
+                0 0 20px rgba(212, 175, 55, 0.3);
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+button:active {
+    transform: translateY(-1px);
+}
+
+a button {
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* Sections */
+section ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+section li {
+    background: var(--police-white);
+    padding: 2rem;
+    border-radius: 8px;
+    border-left: 5px solid var(--police-gold);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    font-size: 1.15rem;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+}
+
+section li::before {
+    content: '▶';
+    position: absolute;
+    left: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--police-gold);
+    font-size: 1.5rem;
+    transition: var(--transition);
+}
+
+section li:hover::before {
+    left: 5px;
+}
+
+section li:hover {
+    transform: translateX(10px) translateY(-3px);
+    box-shadow: var(--shadow-lg),
+                0 0 15px rgba(212, 175, 55, 0.3);
+    border-left-color: var(--police-saffron);
+}
+
+/* Officer Section */
+.officer {
+    background: var(--police-white);
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow-lg);
+    max-width: 600px;
+    margin: 2rem auto;
+    border: 2px solid var(--police-gold);
+    position: relative;
+}
+
+.officer::before {
+    content: '🛡️';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    background: var(--police-white);
+    padding: 0 0.5rem;
+}
+
+.retired-photo {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(0, 26, 77, 0.2);
+    cursor: pointer;
+    transition: var(--transition);
+    margin-bottom: 1rem;
+    border: 2px solid var(--police-navy);
+}
+
+.retired-photo:hover {
+    transform: scale(1.05) rotateY(3deg);
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.4);
+}
+
+.officer p {
+    color: var(--text-secondary);
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Gallery */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.gallery-item {
+    background: var(--police-white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    cursor: pointer;
+    border: 2px solid transparent;
+    position: relative;
+}
+
+.gallery-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 2;
+}
+
+.gallery-item:hover::before {
+    opacity: 1;
+}
+
+.gallery-item:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: var(--shadow-lg),
+                0 0 30px rgba(212, 175, 55, 0.4);
+    border-color: var(--police-gold);
+}
+
+.gallery img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: var(--transition);
+    display: block;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1) rotate(1deg);
+}
+
+.photo-caption {
+    padding: 1rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-align: center;
+    color: var(--police-navy);
+    background: linear-gradient(135deg, #fafafa, #f5f5f5);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 26, 77, 0.95), rgba(0, 61, 153, 0.95));
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 1rem;
+    animation: fadeIn 0.3s ease-in-out;
+    backdrop-filter: blur(5px);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(212, 175, 55, 0.05) 10px,
+        rgba(212, 175, 55, 0.05) 20px
+    );
+    pointer-events: none;
+}
+
+.modal img {
+    max-width: 90%;
+    max-height: 85%;
+    border-radius: 8px;
+    box-shadow: 0 0 0 60px rgba(0, 0, 0, 0.6),
+                0 0 80px rgba(212, 175, 55, 0.4);
+    animation: zoomIn 0.3s ease-in-out;
+    border: 3px solid var(--police-gold);
+    position: relative;
+    z-index: 1001;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.gallery-img {
+    cursor: pointer;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(135deg, var(--police-navy) 0%, var(--police-blue) 100%);
+    color: var(--police-white);
+    text-align: center;
+    padding: 2rem;
+    margin-top: auto;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    border-top: 4px solid var(--police-gold);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+footer p {
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    section h2 {
+        font-size: 1.8rem;
+    }
+
+    button {
+        padding: 0.8rem 1.8rem;
+        font-size: 0.95rem;
+    }
+
+    .event-card {
+        padding: 2rem;
+    }
+}
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal img {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+footer {
+    background: #0F172A;
+    color: white;
+    padding: 20px;
+    margin-top: 40px;
+}

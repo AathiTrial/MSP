@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery - MSP 93 C Company</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>🛡️ MSP 93 C COMPANY 🛡️</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>📸 Event Photo Gallery</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="images/photo1.jpg.jpeg" alt="Inauguration by DySP Thamarassery" onclick="openImage(this.src)">
+                    <p class="photo-caption">🎖️ Inauguration by DySP THAMARASSERY</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="IMAGES/photo2.jpg.jpeg" alt="Event Photo 2" onclick="openImage(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="IMAGES/photo3.jpg.jpeg" alt="Event Photo 3" onclick="openImage(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="IMAGES/photo4.jpg.jpeg" alt="Event Photo 4" onclick="openImage(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="IMAGES/photo5.jpg.jpeg" alt="Event Photo 5" onclick="openImage(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="IMAGES/photo6.jpg.jpeg" alt="Event Photo 6" onclick="openImage(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="IMAGES/photo7.jpg.jpeg" alt="Event Photo 7" onclick="openImage(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="IMAGES/photo8.jpg.jpeg" alt="Event Photo 8" onclick="openImage(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="IMAGES/photo9.jpg.jpeg" alt="Event Photo 9" onclick="openImage(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="IMAGES/photo10.jpg.jpeg" alt="Event Photo 10" onclick="openImage(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="IMAGES/photo11.jpg.jpeg" alt="Event Photo 11" onclick="openImage(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="IMAGES/photo12.jpg.jpeg" alt="Event Photo 12" onclick="openImage(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="IMAGES/photo13.jpg.jpeg" alt="Event Photo 13" onclick="openImage(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="IMAGES/photo14.jpg.jpeg" alt="Event Photo 14" onclick="openImage(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="IMAGES/photo15.jpg.jpeg" alt="Event Photo 15" onclick="openImage(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="IMAGES/photo16.jpg.jpeg" alt="Event Photo 16" onclick="openImage(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="IMAGES/photo17.jpg.jpeg" alt="Event Photo 17" onclick="openImage(this.src)">
+                </div>
+            </div>
+        </section>
+
+        <section style="text-align: center; margin-top: 2rem;">
+            <a href="details.html">
+                <button>← Back to Event Details</button>
+            </a>
+        </section>
+
+        <div id="imageModal" class="modal" onclick="closeImage()">
+            <img id="modalImg" alt="Full size image view">
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 MSP 93 C Company. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function openImage(src) {
+            document.getElementById("imageModal").style.display = "flex";
+            document.getElementById("modalImg").src = src;
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeImage() {
+            document.getElementById("imageModal").style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeImage();
+            }
+        });
+    </script>
+</body>
+
+</html>
